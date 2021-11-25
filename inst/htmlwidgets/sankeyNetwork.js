@@ -184,7 +184,7 @@ HTMLWidgets.widget({
             .append("title")
             .append("foreignObject")
             .append("xhtml:body")
-            .html(function(d) { return "<pre>" + d.name + "<br>" + format(d.value) + 
+            .html(function(d) { return "<pre>" + d.name + "\n" + format(d.value) + 
                 " " + options.units + "</pre>"; });
 
         node.append("text")
