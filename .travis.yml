@@ -1,3 +1,9 @@
 language: node_js
 node_js:
   - '11.13'
+
+install:
+  - npm install
+
+script:
+  - npm run test
