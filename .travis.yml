@@ -8,7 +8,7 @@ install:
 script:
   - npm run prepare
   - npm run test
+
 addons:
-  artifacts: true
-  paths: 
-  - inst/htmlwidgets/test/snapshots 
+  artifacts:
+    working_dir: inst/htmlwidgets/test/snapshots 
