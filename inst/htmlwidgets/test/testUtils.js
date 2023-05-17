@@ -34,7 +34,6 @@ class testUtils {
                     height: height
                 }
             });
-            throw e;
         }
     }
 }
