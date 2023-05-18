@@ -10,5 +10,4 @@ script:
   - npm run test
 
 addons:
-  artifacts:
-    working_dir: inst/htmlwidgets/test/snapshots 
+  artifacts: true
