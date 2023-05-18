@@ -67,7 +67,6 @@ test('Check sankey network rendering in firefox', async () => {
 		var el = document.getElementById("myDiv");
 		var instance = sankeyNetworkDefinition.initialize(el, 800, 600);
 		sankeyNetworkDefinition.renderValue(el, data, instance);
-		var image = instance.snap
 	}, data);
 });
 

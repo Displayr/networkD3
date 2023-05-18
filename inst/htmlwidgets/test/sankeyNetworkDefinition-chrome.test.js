@@ -15,7 +15,7 @@ var data = {
     },
     "options": {
         "NodeID": "name", "NodeGroup": "group", "LinkGroup": "group", "colourScale": "d3.scaleOrdinal() .domain(['0','1','2','3','4','5','6','7','8','9','10','11','12','13']) .range(['#EF5953','#3E7DCC','#D18CA2','#6CA19D','#EF5953','#3E7DCC','#D18CA2','#6CA19D','#EF5953','#3E7DCC','#6CA19D','#EF5953','#3E7DCC','#6CA19D']);", "fontSize": 17, "fontFamily": "Arial", "nodeWidth": 30, "nodePadding": 40, "units": "",
-        "margin": { "top": 20, "right": 20, "bottom": 20, "left": 20 },
+        "margin": { "top": null, "right": null, "bottom": null, "left": null },
         "iterations": 0,
         "sinksRight": false
     }
@@ -67,12 +67,11 @@ test('Check sankey network rendering in chrome', async () => {
 		var el = document.getElementById("myDiv");
 		var instance = sankeyNetworkDefinition.initialize(el, 800, 600);
 		sankeyNetworkDefinition.renderValue(el, data, instance);
-		var image = instance.snap
 	}, data);
 });
 
 
 afterEach(async () => {
-	await testUtils.snapshotAndCompare(page, 'firefox-screenshot', 800, 600);
+	await testUtils.snapshotAndCompare(page, 'chrome-screenshot', 800, 600);
     await browser.close();
 });
