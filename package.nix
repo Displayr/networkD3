@@ -12,6 +12,6 @@ pkgs.rPackages.buildRPackage {
     magrittr
     igraph
     data_tree
- ];
+  ];
 
 }
