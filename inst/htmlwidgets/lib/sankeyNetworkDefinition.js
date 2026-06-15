@@ -1,3 +1,16 @@
+// RS-22478: node/link names are user-supplied data and are written into the
+// tooltips via .html() on an xhtml:body (an HTML parsing context inside the
+// foreignObject), so escape them to prevent stored XSS. The visible node label
+// uses .text() and does not need escaping.
+function htmlEscape(s) {
+    return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
 const sankeyNetworkDefinition = {
 
     name: "sankeyNetwork",
@@ -168,8 +181,8 @@ const sankeyNetworkDefinition = {
         link.append("title")
             .append("foreignObject")
             .append("xhtml:body")
-            .html(function(d) { return "<pre>" + d.source.name + " \u2192 " + d.target.name +
-                "\n" + format(d.value) + " " + options.units + "</pre>"; });
+            .html(function(d) { return "<pre>" + htmlEscape(d.source.name) + " \u2192 " + htmlEscape(d.target.name) +
+                "\n" + format(d.value) + " " + htmlEscape(options.units) + "</pre>"; });
 
         node.append("rect")
             .attr("height", function(d) { return d.dy; })
@@ -183,8 +196,8 @@ const sankeyNetworkDefinition = {
             .append("foreignObject")
             .append("xhtml:body")
             .attr("class", "node-tooltip")
-            .html(function(d) { return "<pre>" + d.name + "\n" + format(d.value) + 
-                " " + options.units + "</pre>"; });
+            .html(function(d) { return "<pre>" + htmlEscape(d.name) + "\n" + format(d.value) +
+                " " + htmlEscape(options.units) + "</pre>"; });
 
         node.append("text")
             .attr("x", -6)
